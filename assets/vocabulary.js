@@ -47,6 +47,7 @@ function vocabRepeatRound(){
 }
 // Consistent presentation for activity cards throughout the shared site.
 function activityCardTitle(title){
+  if(route[0]==='civic'||(route[0]==='llr'&&route[1]==='vocab'&&!route[2]))return String(title).trim();
   if(route[0]==='math'&&route[1]==='unknown'){
     const items=Object.values(route[2]?UNKNOWN_LEVELS:UNKNOWN_TYPES),index=items.findIndex(v=>v[0]===String(title));
     if(index>=0)return (index+1)+'. '+String(title).replace(/^\p{Extended_Pictographic}\s*/u,'');
@@ -249,7 +250,7 @@ const VOCAB_BONUS = {
   'a făgădui':['a-și da cuvântul','a găzdui'],
   'a consola':['a alina','a decola']
 };
-function vocabOppositeEntries(){return VOCAB.map((v,i)=>({v,i,extra:(window.VOCAB_ADDITIONS||[]).find(x=>x.word===v[0])})).filter(x=>x.v[2]&&(VOCAB_BONUS[x.v[0]]||x.extra?.bonusSimilar));}
+function vocabOppositeEntries(){const rank=new Map(vocabFlashOrder().map((id,i)=>[id,i]));return VOCAB.map((v,i)=>({v,i,extra:(window.VOCAB_ADDITIONS||[]).find(x=>x.word===v[0])})).filter(x=>x.v[2]&&(VOCAB_BONUS[x.v[0]]||x.extra?.bonusSimilar)).sort((a,b)=>rank.get(a.i)-rank.get(b.i));}
 function vocabOppositeChoices(entry){
   const {v,extra}=entry,meta=VOCAB_BONUS[v[0]];
   return {correct:meta?.[2]||v[2],similar:[v[1],meta?.[0]||extra.bonusSimilar],rhyme:meta?.[1]||extra.bonusRhyme};
@@ -263,17 +264,17 @@ function vocabOppositeVerify(){
 function vocabRenderOpposite(){
   const m=vocabModel(),entries=vocabOppositeEntries();
   m.bonusIds=entries.map(x=>x.i);m.bonusOptions=m.bonusOptions||{};
-  const body=entries.map(entry=>{
+  const body=entries.map((entry,number)=>{
     const {v,i}=entry,choices=vocabOppositeChoices(entry);
     if(!m.bonusOptions[i])m.bonusOptions[i]=vocabShuffle([...choices.similar,choices.rhyme,choices.correct]);
-    return `<div class="task"><p><b>${esc(v[0])}</b></p><div class="options">${m.bonusOptions[i].map(option=>`<button type="button" class="option ${val('op'+i)===option?'chosen':''}" aria-pressed="${val('op'+i)===option}" onclick="vocabPickOpposite(${i},${esc(JSON.stringify(option))})">${esc(option)}</button>`).join('')}</div><input type="hidden" data-id="op${i}" data-word-index="${i}" data-answer="${esc(choices.correct)}" value="${esc(val('op'+i))}"></div>`;
+    return `<div class="task"><p><b>${number+1}. ${esc(v[0])}</b></p><div class="options">${m.bonusOptions[i].map(option=>`<button type="button" class="option ${val('op'+i)===option?'chosen':''}" aria-pressed="${val('op'+i)===option}" onclick="vocabPickOpposite(${i},${esc(JSON.stringify(option))})">${esc(option)}</button>`).join('')}</div><input type="hidden" data-id="op${i}" data-word-index="${i}" data-answer="${esc(choices.correct)}" value="${esc(val('op'+i))}"></div>`;
   }).join('');
   saveProgress();
   view(`<div class="hero"><h2>⭐ Cuvinte cu sens opus</h2><p>Alege cuvântul cu sens opus! 🌟</p></div><div class="panel">${body}<div class="row"><button class="btn" onclick="vocabOppositeVerify()">✓ Verifică</button><button class="btn alt" onclick="vocabRepeatRound()">↺ Repetă runda</button></div><div id="score" aria-live="polite"></div></div>`);
 }
 renderVocab = function(level) {
   vocabApplyReleases();
-  if(!level)return view(`<div class="hero"><h2>🌱 Vocabular</h2><p>🌟 ${VOCAB.length} de cuvinte în lucru!</p><div class="rule"><b>REȚINE!</b> Cuvintele cu sens asemănător exprimă idei apropiate. Cuvintele cu sens opus exprimă idei contrare.</div></div><div class="cards vocab-activities">${card('📖 Învață – Flashcarduri','Toate cuvintele, mereu la îndemână','go("llr","vocab","learn")')}${card('🧩 Găsește perechea','10 cuvinte în fiecare rundă','go("llr","vocab","match")')}${card('✏️ Scrie cuvinte cu sens asemănător','Seturi de 10 cuvinte și indicii dacă ai nevoie :)','go("llr","vocab","similar")')}${card('💬 Completează propozițiile','Propoziții pe rând, în ritmul tău','go("llr","vocab","gaps")')}${card('⭐ Cuvinte cu sens opus','Descoperă contrariile','go("llr","vocab","opposite")')}</div>`);
+  if(!level)return view(`<div class="hero"><h2>🌱 Vocabular</h2><p>🌟 ${VOCAB.length} de cuvinte în lucru!</p><div class="rule"><b>REȚINE!</b> Cuvintele cu sens asemănător exprimă idei apropiate. Cuvintele cu sens opus exprimă idei contrare.</div></div><div class="cards vocab-activities">${card('1. 📖 Învață – Flashcarduri','Toate cuvintele, mereu la îndemână','go("llr","vocab","learn")')}${card('2. 🧩 Găsește perechea','10 cuvinte în fiecare rundă','go("llr","vocab","match")')}${card('3. ✏️ Scrie cuvinte cu sens asemănător','Seturi de 10 cuvinte și indicii dacă ai nevoie :)','go("llr","vocab","similar")')}${card('4. 💬 Completează propozițiile','Propoziții pe rând, în ritmul tău','go("llr","vocab","gaps")')}${card('5. ⭐ Cuvinte cu sens opus','Descoperă contrariile','go("llr","vocab","opposite")')}</div>`);
   if(level==='learn'){
     const ids=vocabFlashOrder();
     const colors=vocabFlashColors(ids.length),firstExplanation=vocabExplanationFirst();
