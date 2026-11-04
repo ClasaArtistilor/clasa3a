@@ -5,7 +5,7 @@ FRIENDLY_ROUTES['matematica/ordinea-operatiilor']=['math','order'];
 for(const kind of Object.keys(ORDER_TYPES))FRIENDLY_ROUTES['matematica/ordinea-operatiilor/'+kind]=['math','order',kind];
 const orderCrumbs=crumbs;crumbs=function(){return orderCrumbs().replace(/>Primul termen<\/button>/g,route[0]==='math'&&route[1]==='order'?'>Ordinea operațiilor</button>':'>Primul termen</button>').replace(/>order<\/button>/g,'>Ordinea operațiilor</button>').replace(/>first<\/button>/g,'>Ordinea operațiilor</button>').replace(/>calculate<\/button>/g,'>Calculează</button>').replace(/>compare<\/button>/g,'>Compară</button>');};
 const orderLoad=loadProgress;loadProgress=function(){return route[0]==='math'&&route[1]==='order'?{}:orderLoad();};
-const orderView=view;view=function(html){if(route[0]==='math'&&!route[1])html=html.replace(/<\/div>$/,card('🧮 Ordinea efectuării operațiilor','Adunări, scăderi și paranteze rotunde',"go('math','order')")+'</div>');return orderView(html);};
+const orderView=view;view=function(html){if(route[0]==='math'&&!route[1])html=html.replace(/<\/div>$/,card('🍪 OR.E.O.','Ordinea efectuării operațiilor: adunări, scăderi și paranteze rotunde',"go('math','order')")+'</div>');return orderView(html);};
 const orderCertificateTitle=certificateTitle;certificateTitle=function(){return route[0]==='math'&&route[1]==='order'?'Matematică – Ordinea operațiilor – '+ORDER_TYPES[route[2]][0]:orderCertificateTitle();};
 function orderParse(expression){
  const tokens=expression.match(/\d+|[()+-]/g)||[];let index=0,depth=0;const plan=[];
