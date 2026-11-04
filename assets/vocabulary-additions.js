@@ -170,5 +170,16 @@ window.VOCAB_ADDITIONS = [
     "opposite": "vijelios",
     "bonusSimilar": "liniștit",
     "bonusRhyme": "pinguin"
+  },
+  {
+    "word": "murmură",
+    "meaning": "șoptește",
+    "sentence": "Bunica ___ o poveste la urechea copilului.",
+    "answers": "murmură",
+    "lesson": "Miercuri",
+    "addedAt": "2026-11-04T08:39:56+02:00",
+    "opposite": "strigă",
+    "bonusSimilar": "șușotește",
+    "bonusRhyme": "gură"
   }
 ];
