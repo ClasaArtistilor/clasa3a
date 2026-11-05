@@ -2,21 +2,57 @@
 const scienceOriginalRenderer=renderScience;
 SCIENCE[0].title='Aerul cald, aerul rece';
 const scienceOriginalCrumbs=crumbs;
-crumbs=function(){return scienceOriginalCrumbs().replace(/>lessons<\/button>/g,'>Lecții</button>').replace(/>experiments<\/button>/g,'>Experimente</button>').replace(/>states<\/button>/g,'>Stările de agregare</button>').replace(/>cycle<\/button>/g,'>Circuitul apei</button>').replace(/>weather<\/button>/g,'>Fenomene ale naturii</button>').replace(/>pollution<\/button>/g,'>Poluare și protejarea mediului</button>').replace(/>text<\/button>/g,'>Text lacunar</button>').replace(/>crossword<\/button>/g,'>Rebus</button>').replace(/>tf<\/button>/g,'>Adevărat sau fals</button>').replace(/>gaps<\/button>/g,'>Completează</button>').replace(/>match<\/button>/g,'>Asociază</button>').replace(/>choice<\/button>/g,'>Alege</button>');};
+crumbs=function(){return scienceOriginalCrumbs().replace(/>lessons<\/button>/g,'>Lecții</button>').replace(/>experiments<\/button>/g,'>Experimente</button>').replace(/>states<\/button>/g,'>Stările de agregare</button>').replace(/>cycle<\/button>/g,'>Circuitul apei</button>').replace(/>weather<\/button>/g,'>Fenomene ale naturii</button>').replace(/>pollution<\/button>/g,'>Poluare și protejarea mediului</button>').replace(/>invata<\/button>/g,'>Învățăm</button>').replace(/>text<\/button>/g,'>Text lacunar</button>').replace(/>crossword<\/button>/g,'>Rebus</button>').replace(/>tf<\/button>/g,'>Adevărat sau fals</button>').replace(/>gaps<\/button>/g,'>Completează</button>').replace(/>match<\/button>/g,'>Asociază</button>').replace(/>choice<\/button>/g,'>Alege</button>');};
 FRIENDLY_ROUTES['stiinte/lectii']=['science','lessons'];
 FRIENDLY_ROUTES['stiinte/experimente']=['science','experiments'];
 const scienceSlugs={states:'starile-de-agregare',cycle:'circuitul-apei-in-natura',weather:'fenomene-ale-naturii',pollution:'poluarea-si-protejarea-mediului'};
+const SCIENCE_LEARN={
+ states:[
+ ['🧊','Cele trei stări','Gheața este solidă, apa din pahar este lichidă, iar vaporii sunt apă în stare gazoasă.'],
+ ['🌡️','Apa se transformă','Încălzirea și răcirea pot schimba starea apei.'],
+ ['💧','Topire','Gheața se încălzește și devine apă lichidă: solid → lichid.'],
+ ['❄️','Solidificare','Apa lichidă îngheață și devine gheață: lichid → solid.'],
+ ['☀️','Vaporizare','Apa lichidă se transformă în vapori. Evaporarea are loc la suprafață, chiar și fără fierbere.'],
+ ['🫧','Fierbere','Apa se transformă în vapori în toată masa ei; apar bule.'],
+ ['☁️','Condensare','Vaporii se răcesc și formează picături de apă: gaz → lichid.']
+ ],
+ cycle:[
+ ['🧊💧💨','Apa în trei stări','Gheața este solidă, apa pe care o bem este lichidă, iar vaporii sunt în stare gazoasă.'],
+ ['☀️','Soarele pune apa în mișcare','Căldura Soarelui ajută apa din lacuri, râuri și mări să se evapore.'],
+ ['💨','Evaporare și fierbere','Apa lichidă devine vapori. Evaporarea are loc la suprafață, fără să fie nevoie de fierbere; la fierbere apar bule în toată apa.'],
+ ['☁️','Condensare și nori','Vaporii răciți pot forma picături mici. Norii conțin picături foarte mici de apă sau cristale de gheață.'],
+ ['🌧️❄️','Precipitații','Apa revine din nori sub formă de ploaie, ninsoare sau grindină.'],
+ ['🌱🏞️','Drumul continuă','O parte din apă pătrunde în sol; alta curge în pâraie, râuri, lacuri, mări și oceane. Apoi circuitul se repetă.'],
+ ['🔄','Alte transformări','Topire: gheață → apă. Solidificare: apă → gheață. Condensare: vapori → picături. Temperatura influențează aceste schimbări.']
+ ],
+ weather:[
+ ['🌧️','Ploaia','Picăturile cad din nori, aduc apă în sol și pot curăța aerul de praf. Ploile puternice pot produce și pagube.'],
+ ['❄️','Ninsoarea','Fulgii sunt formați din cristale de gheață. Un strat de zăpadă poate proteja plantele semănate de frig.'],
+ ['💨','Vântul','Este aer în mișcare și poate bate ziua sau noaptea. Aerul cald se ridică, iar aerul mai rece îi poate lua locul.'],
+ ['⚡','Fulgerul','Este o descărcare electrică luminoasă care încălzește brusc aerul; aerul își mărește volumul.'],
+ ['🔊','Tunetul','Este sunetul care însoțește fulgerul: fulgerul se vede, tunetul se aude.'],
+ ['☁️','Picături din vapori','Răcirea vaporilor favorizează formarea picăturilor de apă în atmosferă.']
+ ],
+ pollution:[
+ ['🌍','Ce este poluarea?','Substanțele dăunătoare pot afecta aerul, apa și solul, dar și plantele, animalele și oamenii.'],
+ ['🚗','Aerul','Fumul incendiilor și gazele de eșapament pot polua aerul. Filtrele de la fabrici pot reține o parte dintre poluanți.'],
+ ['💧','Apa','Deșeurile și petrolul deversate în ape pot dăuna viețuitoarelor. Apele uzate pot fi curățate înainte de deversare.'],
+ ['🌱','Solul','Gunoaiele aruncate la întâmplare și substanțele chimice toxice pot polua pământul.'],
+ ['🌧️','Ploaia acidă','Poluanții din aer pot ajunge în ploaie și pot afecta apa și solul.'],
+ ['♻️','Ce putem face?','Punem deșeurile în locuri amenajate, le sortăm pentru reciclare și îngrijim copacii și spațiile verzi.']
+ ]
+};
 const scienceActivities={text:['📝 Text lacunar','Completează textul lecției'],crossword:['🧩 Rebus','Descoperă cuvântul de pe verticală'],gaps:['📝 Completează','16 propoziții de completat'],match:['🔗 Asociază','12 situații și explicațiile lor'],choice:['🎯 Alege răspunsul','12 întrebări cu variante'],tf:['✅ Adevărat sau fals','Alege A sau F']};
 for(const [id,slug] of Object.entries(scienceSlugs)){
  FRIENDLY_ROUTES['stiinte/lectii/'+slug]=['science','lessons',id];
- for(const part of SCIENCE_LESSONS[id].sections)FRIENDLY_ROUTES['stiinte/lectii/'+slug+'/'+part]=['science','lessons',id,part];
+ for(const part of ['invata',...SCIENCE_LESSONS[id].sections])FRIENDLY_ROUTES['stiinte/lectii/'+slug+'/'+part]=['science','lessons',id,part];
 }
 const scienceBaseLoad=loadProgress;
 loadProgress=function(){return route[0]==='science'&&route[1]==='lessons'?{}:scienceBaseLoad();};
 const lessonStyle=document.createElement('style');
 lessonStyle.textContent=`.science-af{position:relative;display:flex;isolation:isolate;width:280px;max-width:100%;padding:4px;margin:10px 0;background:#edf1f6;border:1px solid #bdccd9;border-radius:24px}.science-af button{position:relative;z-index:1;flex:1;border:0;background:transparent;border-radius:20px;padding:10px 8px;min-height:44px;color:#344b65}.science-af-thumb{position:absolute;z-index:0;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);border-radius:20px;transition:transform .18s;background:#d4eee2;opacity:0}.science-af[data-selection="0"] .science-af-thumb{opacity:1}.science-af[data-selection="1"] .science-af-thumb{opacity:1;transform:translateX(100%);background:#ffe0dc}.science-af button[aria-checked=true]{font-weight:800}.science-af button:focus-visible{outline:3px solid #ffb540;outline-offset:1px}@media(prefers-reduced-motion:reduce){.science-af-thumb{transition:none}}.science-tabs{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 18px}.science-tabs button{border:1px solid #aac9d0;background:#f4fbfc;color:#274e62;padding:8px 13px;border-radius:10px;font-weight:650}.science-tabs [aria-current=page]{background:#d7f1ed;border-color:#5f9f98}.science-cycle{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:9px;margin-top:18px}.science-cycle div{background:#eef7ff;border:1px solid #b8d8ed;border-radius:13px;padding:12px}.science-cycle strong{display:block}.science-exercise{border:0;border-bottom:1px solid #dfe8ef;margin:0;padding:16px 0;min-width:0}.science-exercise legend{padding:0;font-weight:650}.science-exercise .entry{width:210px;max-width:100%;margin:4px}.science-choice{display:block;padding:8px 10px;margin:6px 0;border:1px solid #cfdeea;border-radius:9px}.science-choice input{margin-right:8px}.science-feedback{font-size:.94rem;margin:7px 0 0;color:#355d65}.science-bank{background:#fff5ce;border-radius:10px;padding:12px;margin:10px 0}.science-bank span{display:inline-block;margin:3px 6px;padding:3px 8px;background:#fff;border-radius:8px}.science-rebus{overflow-x:auto;padding:10px 0;margin:10px 0 22px}.science-rebus-grid{display:grid;grid-template-columns:repeat(var(--science-rebus-width,15),30px);width:max-content;gap:3px}.science-rebus-grid span{height:30px;display:flex;align-items:center;justify-content:center;font-weight:750}.science-rebus-grid .letter{border:1px solid #89a9ce;border-radius:4px;background:#f1f7ff}.science-rebus-grid .central{background:#fff0a6;border:2px solid #b88c2c}.science-exercise.good,.science-exercise.bad{padding-left:10px;border-radius:9px}.science-actions{margin-top:18px}button:focus-visible{outline:3px solid #ffb540;outline-offset:2px}`;
-document.head.appendChild(lessonStyle);
-function scienceLessonNav(id,part){return `<nav class="science-tabs" aria-label="Activități de științe"><button onclick="go('science','lessons')">📘 Lecții</button><button onclick="go('science','experiments')">🔬 Experimente</button>${id?SCIENCE_LESSONS[id].sections.map(p=>`<button ${p===part?'aria-current="page"':''} onclick="go('science','lessons','${id}','${p}')">${scienceActivities[p][0]}</button>`).join(''):''}</nav>`;}
+lessonStyle.textContent+=`.science-learn-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:16px;margin:18px 0}.science-learn-card{background:#fff;border:2px solid #c9deef;border-radius:20px;padding:19px;box-shadow:0 5px 14px #31597c0a}.science-learn-card:nth-child(4n+1){background:#fff8e4;border-color:#f1d796}.science-learn-card:nth-child(4n+2){background:#eef8ff;border-color:#addbf0}.science-learn-card:nth-child(4n+3){background:#f4f0ff;border-color:#d6c8f0}.science-learn-card:nth-child(4n){background:#eefaf2;border-color:#bde1c8}.science-learn-icon{font-size:2rem}.science-learn-card h3{margin:8px 0;color:#243a58}.science-learn-card p{margin:0;line-height:1.55}.science-learn-actions{margin:16px 0 32px}`;document.head.appendChild(lessonStyle);
+function scienceLessonNav(id,part){return `<nav class="science-tabs" aria-label="Activități de științe"><button onclick="go('science','lessons')">📘 Lecții</button><button onclick="go('science','experiments')">🔬 Experimente</button>${id?['invata',...SCIENCE_LESSONS[id].sections].map(p=>`<button ${p===part?'aria-current="page"':''} onclick="go('science','lessons','${id}','${p}')">${p==='invata'?'📖 Învățăm':scienceActivities[p][0]}</button>`).join(''):''}</nav>`;}
 function scienceLessonSet(id,value){state['science-'+id]=value;document.getElementById('science-result')?.replaceChildren();}
 function scienceLessonOrder(key,n){state.__scienceOrders=state.__scienceOrders||{};return state.__scienceOrders[key]||(state.__scienceOrders[key]=vocabShuffle(Array.from({length:n},(_,i)=>i)));}
 function scienceLessonVal(id){return state['science-'+id]||'';}
@@ -57,7 +93,8 @@ function scienceLessonVerify(){
 function scienceLessonReset(){state={};renderScience('lessons');}
 function scienceLessonRender(id,part){
  const lesson=SCIENCE_LESSONS[id];if(!lesson)return renderScience('lessons');
- if(!part){const cycle=id==='cycle'?`<div class="science-cycle">${[['☀️ Evaporare','Apa trece în aer sub formă de vapori'],['☁️ Condensare','Vaporii răciți formează picături'],['🌧️ Precipitații','Apa revine la sol'],['🌊 Revenirea apei','Apa pătrunde în sol sau ajunge în râuri, lacuri și mări']].map(([h,t])=>`<div><strong>${h}</strong>${t}</div>`).join('')}</div>`:'';return view(scienceLessonNav(id)+`<div class="hero"><h2>📘 ${lesson.title}</h2><p>${lesson.intro}</p>${cycle}</div><div class="cards">${lesson.sections.map(p=>card(scienceActivities[p][0],p==='tf'?lesson.tf.length+' enunțuri':p==='gaps'?lesson.gaps.length+' propoziții de completat':p==='match'?lesson.match.length+' asocieri':p==='choice'?lesson.choice.length+' întrebări':scienceActivities[p][1],`go('science','lessons','${id}','${p}')`)).join('')}</div>`);}
+ if(!part)return view(scienceLessonNav(id)+`<div class="hero"><h2>📘 ${lesson.title}</h2><p>${lesson.intro}</p></div><div class="cards">${card('📖 Învățăm','Descoperă pe scurt, apoi exersează',`go('science','lessons','${id}','invata')`)}${lesson.sections.map(p=>card(scienceActivities[p][0],p==='tf'?lesson.tf.length+' enunțuri':p==='gaps'?lesson.gaps.length+' propoziții de completat':p==='match'?lesson.match.length+' asocieri':p==='choice'?lesson.choice.length+' întrebări':scienceActivities[p][1],`go('science','lessons','${id}','${p}')`)).join('')}</div>`);
+ if(part==='invata')return view(scienceLessonNav(id,part)+`<div class="hero"><p class="section-label">${esc(lesson.title)}</p><h2>📖 Învățăm</h2><p>Descoperă, apoi încearcă exercițiile!</p></div><div class="science-learn-grid">${SCIENCE_LEARN[id].map(([icon,title,text])=>`<article class="science-learn-card"><span class="science-learn-icon" aria-hidden="true">${icon}</span><h3>${esc(title)}</h3><p>${esc(text)}</p></article>`).join('')}</div><div class="science-learn-actions"><button class="btn" onclick="go('science','lessons','${id}','${lesson.sections[0]}')">Hai la exerciții! ✨</button></div>`);
  if(!lesson.sections.includes(part))return scienceLessonRender(id);
  let body='';
  if(part==='text'||part==='gaps')body=scienceWordBank(lesson.bank)+scienceRenderGaps(lesson[part],part==='text');
