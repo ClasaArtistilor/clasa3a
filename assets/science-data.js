@@ -1108,3 +1108,56 @@ window.SCIENCE_LESSONS = {
     ]
   }
 };
+
+// The new chapter is inserted first; existing lesson identifiers remain unchanged.
+window.SCIENCE_LESSONS = {sources: {
+ "title":"Surse de apă",
+ "intro":"Descoperă unde găsim apa și cum o folosim",
+ "sections":["gaps","match","choice","tf"],
+ "bank":["vitală","mările","curgătoare","hidrocentrale","precipitațiile","subterană","izvoare","sărată","râu","economisim"],
+ "gaps":[
+  ["Apa este ___ pentru plante, animale și oameni.","vitală"],
+  ["Apele stătătoare sunt: bălțile, lacurile, ___ și oceanele.","mările"],
+  ["Izvoarele, pâraiele, râurile și fluviile sunt ape ___.","curgătoare"],
+  ["Apa este folosită la producerea curentului electric în ___.","hidrocentrale"],
+  ["Principala sursă de apă pentru plante și animale sunt ___.","precipitațiile"],
+  ["Apa aflată sub pământ se numește apă ___.","subterană"],
+  ["Ploaia și ninsoarea sunt forme de ___.","precipitații"],
+  ["Mările și oceanele conțin, în cea mai mare parte, apă ___.","sărată"],
+  ["Dâmbovița este un ___ care trece prin București.","râu"],
+  ["Este important să protejăm apa și să o ___.","economisim"]
+ ],
+ "match":[
+  ["Bălți, lacuri, mări, oceane","ape stătătoare"],
+  ["Izvoare, pâraie, râuri, fluvii","ape curgătoare"],
+  ["Fântâni și puțuri","apă subterană"],
+  ["Ploi și ninsori","precipitații"],
+  ["O baltă","ape stătătoare"],
+  ["Un pârâu","ape curgătoare"],
+  ["Apa dintr-un puț","apă subterană"],
+  ["Ninsoarea","precipitații"]
+ ],
+ "choice":[
+  ["Apele stătătoare sunt:",["izvoarele, pâraiele și râurile","bălțile, lacurile, mările și oceanele","ploile și ninsorile"],1,"Acestea sunt exemple de ape stătătoare."],
+  ["Apa este folosită la producerea curentului electric în:",["hidrocentrale","fântâni","locuințe"],0,"Hidrocentralele folosesc energia apei pentru a produce electricitate."],
+  ["Apa subterană este folosită de oameni prin:",["irigarea culturilor","transportul mărfurilor","săparea de fântâni și puțuri sau captarea izvoarelor"],2,"Apa subterană poate fi adusă la suprafață prin fântâni, puțuri sau captarea izvoarelor."],
+  ["Mările și oceanele sunt folosite de oameni pentru:",["producerea curentului electric","transportul mărfurilor și al călătorilor","săparea fântânilor"],1,"Pe mări și oceane circulă nave care transportă oameni și mărfuri."],
+  ["Care este un exemplu de apă curgătoare?",["un râu","un lac","o baltă"],0,"Râurile sunt ape curgătoare."],
+  ["Care este un exemplu de precipitație?",["ninsoarea","izvorul","fântâna"],0,"Ploaia și ninsoarea sunt precipitații."],
+  ["Ce fel de apă se află în ghețari?",["apă dulce, înghețată","apă sărată","apă minerală carbogazoasă"],0,"Ghețarii păstrează apă dulce în stare solidă."],
+  ["Ce este Dâmbovița?",["un râu","un ocean","un fluviu"],0,"Dâmbovița este un râu care trece prin București."]
+ ],
+ "tf":[
+  ["Apa se găsește în natură sub diferite forme.",true,"În natură întâlnim apa în mai multe forme."],
+  ["Apa sărată este egală cu apa dulce pe Pământ.",false,"Pe Pământ este mult mai multă apă sărată decât apă dulce."],
+  ["Ghețarii sunt o sursă de apă sărată.",false,"Ghețarii conțin apă dulce înghețată."],
+  ["Fluviile fac parte din apele curgătoare.",true,"Fluviile sunt ape curgătoare."],
+  ["Peștii sunt o sursă de hrană pentru oameni.",true,"Peștii pot fi folosiți ca hrană."],
+  ["Dâmbovița este un fluviu important din București.",false,"Dâmbovița este un râu care trece prin București."],
+  ["Ploaia și ninsoarea sunt precipitații.",true,"Ambele sunt forme de precipitații."],
+  ["O fântână poate ajuta oamenii să folosească apa subterană.",true,"Apa subterană poate fi adusă la suprafață cu ajutorul fântânilor."],
+  ["Toată apa de pe Pământ este dulce.",false,"Cea mai mare parte a apei de pe Pământ este sărată."],
+  ["Hidrocentralele pot produce curent electric cu ajutorul apei.",true,"Apa poate pune în mișcare turbinele unei hidrocentrale."]
+ ]
+}
+, ...window.SCIENCE_LESSONS};
