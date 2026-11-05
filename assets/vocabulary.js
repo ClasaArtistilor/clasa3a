@@ -291,7 +291,7 @@ renderVocab = function(level) {
 route=routeFromPath();state=loadProgress();render();
 
 // Install subject extensions before attaching the shared reward system.
-function curajosLoadScript(name){return new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=SITE_ROOT+'assets/'+name+'.js?v=20261030-science2';s.onload=resolve;s.onerror=reject;document.body.appendChild(s);});}
+function curajosLoadScript(name){return new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=SITE_ROOT+'assets/'+name+'.js?v=20261105-colors';s.onload=resolve;s.onerror=reject;document.body.appendChild(s);});}
 Promise.all([
  curajosLoadScript('science-data').then(()=>curajosLoadScript('science-lessons')),
  curajosLoadScript('math-order'),
