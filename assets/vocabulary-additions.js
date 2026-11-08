@@ -181,5 +181,96 @@ window.VOCAB_ADDITIONS = [
     "opposite": "strigă",
     "bonusSimilar": "șușotește",
     "bonusRhyme": "gură"
+  },
+  {
+    "word": "codru",
+    "meaning": "pădure",
+    "sentence": "În ___ se auzea cântecul păsărilor.",
+    "answers": "codru",
+    "lesson": "Marți",
+    "addedAt": "2026-11-10T07:00:00+02:00",
+    "releaseAt": "2026-11-10T07:00:00+02:00"
+  },
+  {
+    "word": "luminiș",
+    "meaning": "poiană",
+    "sentence": "Soarele lumina un ___ din pădure.",
+    "answers": "luminiș",
+    "lesson": "Marți",
+    "addedAt": "2026-11-10T07:00:00+02:00",
+    "releaseAt": "2026-11-10T07:00:00+02:00"
+  },
+  {
+    "word": "huceag",
+    "meaning": "dumbravă",
+    "sentence": "Iepurele s-a ascuns într-un ___ .",
+    "answers": "huceag",
+    "lesson": "Marți",
+    "addedAt": "2026-11-10T07:00:00+02:00",
+    "releaseAt": "2026-11-10T07:00:00+02:00"
+  },
+  {
+    "word": "undă",
+    "meaning": "val",
+    "sentence": "Pe lac s-a format o ___ lină.",
+    "answers": "undă",
+    "lesson": "Marți",
+    "addedAt": "2026-11-10T07:00:00+02:00",
+    "releaseAt": "2026-11-10T07:00:00+02:00"
+  },
+  {
+    "word": "luncă",
+    "meaning": "câmpie",
+    "sentence": "Pe ___ de lângă râu pășteau oile.",
+    "answers": "lunca",
+    "lesson": "Miercuri",
+    "addedAt": "2026-11-11T07:00:00+02:00",
+    "releaseAt": "2026-11-11T07:00:00+02:00"
+  },
+  {
+    "word": "onomastică",
+    "meaning": "zi de nume",
+    "sentence": "De ___ lui Ionel, musafirul i-a adus o minge.",
+    "answers": "onomastica",
+    "lesson": "Miercuri",
+    "addedAt": "2026-11-11T07:00:00+02:00",
+    "releaseAt": "2026-11-11T07:00:00+02:00",
+    "bonusContrast": {
+      "question": "cu ce se confundă?",
+      "correct": "zi de naștere",
+      "distractors": [
+        "Revelion",
+        "Ziua Mamei",
+        "Mărțișor"
+      ]
+    }
+  },
+  {
+    "word": "vestibul",
+    "meaning": "hol",
+    "sentence": "Musafirul și-a lăsat paltonul în ___ .",
+    "answers": "vestibul",
+    "lesson": "Miercuri",
+    "addedAt": "2026-11-11T07:00:00+02:00",
+    "releaseAt": "2026-11-11T07:00:00+02:00"
+  },
+  {
+    "word": "chesea",
+    "meaning": "castronel",
+    "sentence": "Dulceața era pusă într-o ___ de porțelan.",
+    "answers": "chesea",
+    "lesson": "Miercuri",
+    "addedAt": "2026-11-11T07:00:00+02:00",
+    "releaseAt": "2026-11-11T07:00:00+02:00"
+  },
+  {
+    "word": "șoșoni",
+    "meaning": "pantofi de cauciuc",
+    "sentence": "Peste pantofi, musafirul purta ___ .",
+    "answers": "șoșoni",
+    "lesson": "Miercuri",
+    "addedAt": "2026-11-11T07:00:00+02:00",
+    "releaseAt": "2026-11-11T07:00:00+02:00"
   }
 ];
+
