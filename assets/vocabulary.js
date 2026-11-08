@@ -250,9 +250,10 @@ const VOCAB_BONUS = {
   'a făgădui':['a-și da cuvântul','a găzdui'],
   'a consola':['a alina','a decola']
 };
-function vocabOppositeEntries(){const rank=new Map(vocabFlashOrder().map((id,i)=>[id,i]));return VOCAB.map((v,i)=>({v,i,extra:(window.VOCAB_ADDITIONS||[]).find(x=>x.word===v[0])})).filter(x=>x.v[2]&&(VOCAB_BONUS[x.v[0]]||x.extra?.bonusSimilar)).sort((a,b)=>rank.get(a.i)-rank.get(b.i));}
+function vocabOppositeEntries(){const rank=new Map(vocabFlashOrder().map((id,i)=>[id,i]));return VOCAB.map((v,i)=>({v,i,extra:(window.VOCAB_ADDITIONS||[]).find(x=>x.word===v[0])})).filter(x=>x.extra?.bonusContrast||(x.v[2]&&(VOCAB_BONUS[x.v[0]]||x.extra?.bonusSimilar))).sort((a,b)=>Number(!!b.extra?.bonusContrast)-Number(!!a.extra?.bonusContrast)||rank.get(a.i)-rank.get(b.i));}
 function vocabOppositeChoices(entry){
   const {v,extra}=entry,meta=VOCAB_BONUS[v[0]];
+  if(extra?.bonusContrast){const c=extra.bonusContrast;return {correct:c.correct,similar:c.distractors.slice(0,2),rhyme:c.distractors[2]};}
   return {correct:meta?.[2]||v[2],similar:[v[1],meta?.[0]||extra.bonusSimilar],rhyme:meta?.[1]||extra.bonusRhyme};
 }
 function vocabPickOpposite(i,value){vocabSetval('op'+i,value);renderVocab('opposite');}
@@ -267,7 +268,7 @@ function vocabRenderOpposite(){
   const body=entries.map((entry,number)=>{
     const {v,i}=entry,choices=vocabOppositeChoices(entry);
     if(!m.bonusOptions[i])m.bonusOptions[i]=vocabShuffle([...choices.similar,choices.rhyme,choices.correct]);
-    return `<div class="task"><p><b>${number+1}. ${esc(v[0])}</b></p><div class="options">${m.bonusOptions[i].map(option=>`<button type="button" class="option ${val('op'+i)===option?'chosen':''}" aria-pressed="${val('op'+i)===option}" onclick="vocabPickOpposite(${i},${esc(JSON.stringify(option))})">${esc(option)}</button>`).join('')}</div><input type="hidden" data-id="op${i}" data-word-index="${i}" data-answer="${esc(choices.correct)}" value="${esc(val('op'+i))}"></div>`;
+    return `<div class="task"><p><b>${number+1}. ${esc(v[0])}${entry.extra?.bonusContrast?" ("+esc(entry.extra.bonusContrast.question)+")":""}</b></p><div class="options">${m.bonusOptions[i].map(option=>`<button type="button" class="option ${val('op'+i)===option?'chosen':''}" aria-pressed="${val('op'+i)===option}" onclick="vocabPickOpposite(${i},${esc(JSON.stringify(option))})">${esc(option)}</button>`).join('')}</div><input type="hidden" data-id="op${i}" data-word-index="${i}" data-answer="${esc(choices.correct)}" value="${esc(val('op'+i))}"></div>`;
   }).join('');
   saveProgress();
   view(`<div class="hero"><h2>⭐ Cuvinte cu sens opus</h2><p>Alege cuvântul cu sens opus! 🌟</p></div><div class="panel">${body}<div class="row"><button class="btn" onclick="vocabOppositeVerify()">✓ Verifică</button><button class="btn alt" onclick="vocabRepeatRound()">↺ Repetă runda</button></div><div id="score" aria-live="polite"></div></div>`);
@@ -298,3 +299,4 @@ Promise.all([
  curajosLoadScript('math-unknown'),
  curajosLoadScript('orthograms')
 ]).then(()=>curajosLoadScript('rewards')).then(()=>curajosLoadScript('new-subjects')).then(()=>curajosLoadScript('ortho-bonus')).catch(()=>{const el=document.createElement('p');el.className='result';el.textContent='Pagina nu s-a încărcat complet. Reîncarcă și continuă!';document.getElementById('app').prepend(el);});
+
