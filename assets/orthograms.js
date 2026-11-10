@@ -8,89 +8,146 @@ window.EXTRA_ORTHOGRAMS = {
     "rule": "„cei” poate fi înlocuit cu „aceia” sau apare în „cei mai…”. „ce-i” poate însemna „ce îi” sau „ce este”, după context.",
     "choose": [
       [
-        "___ doi colegi desenează.",
+        "___ doi colegi se întâlnesc la magazin.",
         "cei"
       ],
       [
-        "Nu știu ___ place Mariei.",
+        "Ana nu știe ___ trebuie mamei pentru prăjitură.",
         "ce-i"
       ],
       [
-        "Copiii ___ mai harnici au terminat.",
+        "Rareș îi salută pe ___ de la casa de marcat.",
         "cei"
       ],
       [
-        "Spune-mi ___ în cutie.",
+        "— ___ cu tine aici, Ana?",
         "ce-i"
       ],
       [
-        "___ de acasă ne așteaptă.",
+        "Dintre toate fructele, le aleg pe ___ mai coapte.",
         "cei"
       ],
       [
-        "De ___ dai mingea lui Andrei?",
+        "Nu am aflat ___ place colegului meu să citească.",
         "ce-i"
       ],
       [
-        "Brazii ___ mai înalți se văd de departe.",
+        "___ de la fereastră urmăresc ploaia.",
         "cei"
       ],
       [
-        "Nu înțeleg ___ cu motanul.",
+        "Bunica vrea să afle ___ lipsește din coș.",
         "ce-i"
       ],
       [
-        "Îi ajutăm pe ___ mici.",
+        "Le-am povestit celor mici despre ___ trei iepurași.",
         "cei"
       ],
       [
-        "___ mai buni prieteni se sprijină.",
-        "cei"
-      ],
-      [
-        "Am aflat ___ trebuie colegului.",
+        "Ștrengărița întreabă ___ în cutia colorată.",
         "ce-i"
       ],
       [
-        "___ de lângă fereastră citesc.",
+        "___ mai buni prieteni se ajută cu drag.",
         "cei"
+      ],
+      [
+        "Mara a observat ___ pe cerdac.",
+        "ce-i"
       ]
     ],
     "text": [
-      "În clasă, ___ mici pregătesc o surpriză. Irina îi întreabă pe ___ de la fereastră ___ în cutie. Andrei nu știe ___ place bunicii. ___ mai buni prieteni îl ajută să aleagă un dar. Acum a înțeles ___ trebuie bunicii.",
+      "Ana s-a dus la cumpărături împreună cu mama ei. În magazin l-a întâlnit pe Rareș. ___ doi colegi s-au salutat. — Bună, Ana! ___ cu tine aici? — Am venit să cumpăr câteva lucruri. Tu știi ___ trebuie mamei tale? — Da, am o listă pentru ___ de acasă. ___ doi au căutat produsele și au dus coșul la casă.",
       [
         "cei",
-        "cei",
         "ce-i",
         "ce-i",
         "cei",
-        "ce-i"
+        "cei"
       ]
     ],
     "errors": [
       [
-        "Cei doi prieteni citesc.",
+        "Cei doi colegi se salută la magazin.",
         true
       ],
       [
-        "Nu știu cei în ghiozdan.",
+        "Nu știu cei trebuie Anei.",
         false
       ],
       [
-        "Copiii ce-i mai veseli cântă.",
-        false
-      ],
-      [
-        "Spune-mi ce-i place colegului.",
+        "Ce-i cu băiatul de lângă cerdac?",
         true
       ],
       [
-        "Cei de la masă desenează.",
+        "Ce-i mai buni prieteni se ajută.",
+        false
+      ],
+      [
+        "Ana îi întreabă pe cei de la fereastră.",
         true
       ],
       [
-        "De cei dai cartea lui?",
+        "Spune-mi cei în coș.",
         false
+      ],
+      [
+        "Rareș știe ce-i place colegei sale.",
+        true
+      ],
+      [
+        "Cei cu tine astăzi?",
+        false
+      ],
+      [
+        "Cei trei copii se joacă în poiană.",
+        true
+      ],
+      [
+        "Îi ascultăm pe ce-i mici.",
+        false
+      ],
+      [
+        "Am aflat ce-i lipsește bunicii.",
+        true
+      ],
+      [
+        "Ce-i doi prieteni au plecat împreună.",
+        false
+      ]
+    ],
+    "texts": [
+      [
+        "La cumpărături",
+        "Ana s-a dus la cumpărături împreună cu mama ei. În magazin l-a întâlnit pe Rareș. ___ doi colegi s-au salutat. — Bună, Ana! ___ cu tine aici? — Am venit să cumpăr câteva lucruri. Tu știi ___ trebuie mamei tale? — Da, am o listă pentru ___ de acasă. ___ doi au căutat produsele și au dus coșul la casă.",
+        [
+          "cei",
+          "ce-i",
+          "ce-i",
+          "cei",
+          "cei"
+        ]
+      ],
+      [
+        "Surpriza din clasă",
+        "___ mai buni prieteni pregătesc o surpriză pentru colega lor. Mara îi întreabă pe ___ de la fereastră ___ place sărbătoritei. — Îi plac florile! spune unul dintre ei. Ana se gândește ___ poate oferi. ___ doi aleg un buchet colorat.",
+        [
+          "cei",
+          "cei",
+          "ce-i",
+          "ce-i",
+          "cei"
+        ]
+      ],
+      [
+        "O zi în parc",
+        "___ trei copii se plimbă prin parc. Rareș vede un cățel lângă bancă și se întreabă ___ cu el. Ana observă că patrupedul are o zgardă. — Să-i întrebăm pe ___ de lângă alee dacă îl cunosc! spune ea. Un băiat le arată ___ trebuie cățelului: puțină apă.",
+        [
+          "cei",
+          "ce-i",
+          "cei",
+          "ce-i"
+        ]
       ]
     ]
   },
@@ -577,9 +634,17 @@ view=function(html){
  return orthoOldView(html);
 };
 renderOrtho=function(type,exercise){
+ if(type==='cei'&&exercise==='text'){
+  const lesson=EXTRA_ORTHO.cei;
+  const stories=lesson.texts.map(([title,text,answers],story)=>{
+   const pieces=text.split('___');
+   return `<div class="task"><h3>${story+1}. ${esc(title)}</h3><p style="line-height:2.8">${pieces.map((part,j)=>esc(part)+(j<answers.length?` <select class="entry short" aria-label="Textul ${story+1}, spațiul ${j+1}" data-id="text${story}_${j}" data-answer="${esc(answers[j])}" onchange="setval('text${story}_${j}',this.value)"><option value="">Alege</option>${opts.cei.map(o=>`<option value="${esc(o)}" ${val('text'+story+'_'+j)===o?'selected':''}>${esc(orthoDisplayOption(o,part))}</option>`).join('')}</select> `:'')).join('')}</p></div>`;
+  }).join('');
+  return view(`<div class="hero"><div class="section-label">cei / ce-i</div><h2>Completează textele</h2><p>Alege forma potrivită pentru fiecare spațiu.</p><button class="btn alt" onclick="hint('general')">💡 Ajutor</button><div id="hintgeneral"></div></div><div class="panel">${stories}${actions()}</div>`);
+ }
  if(!type)return view(`<div class="hero"><h2>✍️ Ortograme</h2><p>Alege ce vrei să exersezi.</p></div><div class="cards">${Object.keys(orthoNames).map(t=>card(orthoNames[t],EXTRA_ORTHO[t]?(EXTRA_ORTHO[t].transforms?'Alegere • text • transformare • greșeli':'Alegere • text • greșeli'):'Alegere • text • transformare • greșeli',`go('llr','ortho','${t}')`)).join('')}</div>`);
  if(!EXTRA_ORTHO[type]||exercise)return orthoOriginalRenderer(type,exercise);
  const lesson=EXTRA_ORTHO[type],hasTransform=!!lesson.transforms;
- return view(`<div class="hero"><h2>${esc(lesson.title)}</h2><div class="rule"><b>Reține!</b> ${esc(lesson.rule)}</div></div><div class="cards">${card('1. Alege forma corectă','12 enunțuri de completat',`go('llr','ortho','${type}','choose')`)}${card('2. Completează textul','O poveste scurtă, cu formele potrivite',`go('llr','ortho','${type}','text')`)}${hasTransform?card('3. Transformă după model','Povestește ce s-a întâmplat ieri',`go('llr','ortho','${type}','transform')`):''}${card((hasTransform?'4.':'3.')+' Detectivul greșelilor','Descoperă enunțurile scrise corect',`go('llr','ortho','${type}','errors')`)}</div>`);
+ return view(`<div class="hero"><h2>${esc(lesson.title)}</h2><div class="rule"><b>Reține!</b> ${esc(lesson.rule)}</div></div><div class="cards">${card('1. Alege forma corectă','12 enunțuri de completat',`go('llr','ortho','${type}','choose')`)}${card('2. Completează textul',type==='cei'?'Trei povești scurte, cu formele potrivite':'O poveste scurtă, cu formele potrivite',`go('llr','ortho','${type}','text')`)}${hasTransform?card('3. Transformă după model','Povestește ce s-a întâmplat ieri',`go('llr','ortho','${type}','transform')`):''}${card((hasTransform?'4.':'3.')+' Detectivul greșelilor','Descoperă enunțurile scrise corect',`go('llr','ortho','${type}','errors')`)}</div>`);
 };
 const orthoResolvedRoute=routeFromPath();if(JSON.stringify(orthoResolvedRoute)!==JSON.stringify(route)){route=orthoResolvedRoute;state=loadProgress();}render();
