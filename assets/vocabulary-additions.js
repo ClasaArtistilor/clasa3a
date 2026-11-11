@@ -265,7 +265,7 @@ window.VOCAB_ADDITIONS = [
   },
   {
     "word": "șoșoni",
-    "meaning": "pantofi de cauciuc",
+    "meaning": "galoși",
     "sentence": "Peste pantofi, musafirul purta ___ .",
     "answers": "șoșoni",
     "lesson": "Miercuri",
