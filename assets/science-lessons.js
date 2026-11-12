@@ -123,7 +123,7 @@ function scienceLessonRender(id,part){
 }
 renderScience=function(id){
  if(id===undefined)return view(`<div class="hero"><h2>🔬 Științe ale naturii</h2><p>Învață, exersează și descoperă!</p></div><div class="cards">${card('📘 Lecții','Exerciții și jocuri pentru recapitulare',"go('science','lessons')")}${card('🔬 Experimente','Micul laborator de științe',"go('science','experiments')")}</div>`);
- if(id==='lessons'){if(route[2])return scienceLessonRender(route[2],route[3]);return view(scienceLessonNav()+`<div class="hero"><h2>📘 Lecții</h2><p>Alege ce vrei să exersezi.</p></div><div class="cards">${Object.entries(SCIENCE_LESSONS).map(([id,l],i)=>card((i+1)+'. '+({sources:'🌊',states:'🧊',cycle:'💧',weather:'🌦️',pollution:'🌱'}[id]||'🔬')+' '+l.title,l.intro,`go('science','lessons','${id}')`)).join('')}</div>`);}
+ if(id==='lessons'){if(route[2])return scienceLessonRender(route[2],route[3]);return view(scienceLessonNav()+`<div class="hero"><h2>📘 Lecții</h2><p>Alege ce vrei să exersezi.</p></div><div class="cards">${Object.entries(SCIENCE_LESSONS).map(([id,l],i)=>({id,l,number:i+1})).reverse().map(({id,l,number})=>card(number+'. '+({sources:'🌊',states:'🧊',cycle:'💧',weather:'🌦️',pollution:'🌱'}[id]||'🔬')+' '+l.title,l.intro,`go('science','lessons','${id}')`,['weather','pollution'].includes(id)?'2026-11-12T00:00:00+02:00':undefined)).join('')}</div>`);}
  if(id==='experiments'){scienceOriginalRenderer();return;}
  return scienceOriginalRenderer(id);
 };
