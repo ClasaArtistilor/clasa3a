@@ -298,5 +298,5 @@ Promise.all([
  curajosLoadScript('math-order'),
  curajosLoadScript('math-unknown'),
  curajosLoadScript('orthograms')
-]).then(()=>curajosLoadScript('rewards')).then(()=>curajosLoadScript('new-subjects')).then(()=>curajosLoadScript('ortho-bonus')).catch(()=>{const el=document.createElement('p');el.className='result';el.textContent='Pagina nu s-a încărcat complet. Reîncarcă și continuă!';document.getElementById('app').prepend(el);});
+]).then(()=>curajosLoadScript('rewards')).then(()=>curajosLoadScript('new-subjects')).then(()=>curajosLoadScript('ortho-bonus')).then(()=>curajosLoadScript('math-evaluation')).catch(()=>{const el=document.createElement('p');el.className='result';el.textContent='Pagina nu s-a încărcat complet. Reîncarcă și continuă!';document.getElementById('app').prepend(el);});
 
