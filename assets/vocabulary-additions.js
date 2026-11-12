@@ -264,6 +264,15 @@ window.VOCAB_ADDITIONS = [
     "releaseAt": "2026-11-11T07:00:00+02:00"
   },
   {
+    "word": "pustiit",
+    "meaning": "părăsit",
+    "sentence": "Satul era ___ după plecarea tuturor oamenilor.",
+    "answers": "pustiit",
+    "lesson": "Joi",
+    "addedAt": "2026-11-12T07:00:00+02:00",
+    "releaseAt": "2026-11-12T07:00:00+02:00"
+  },
+  {
     "word": "șoșoni",
     "meaning": "galoși",
     "sentence": "Peste pantofi, musafirul purta ___ .",
