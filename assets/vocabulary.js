@@ -62,7 +62,7 @@ function activityCardTitle(title){
   const icon=/^Alege/.test(text)?'🎯':/^Completează/.test(text)?'🧩':/^Transformă/.test(text)?'🔄':/^Detectiv/.test(text)?'🔎':/^Calculează/.test(text)?'🧮':/^Așază/.test(text)?'✏️':/^Rezolvă/.test(text)?'💡':/^Află/.test(text)?'🔎':route[0]==='science'?'🔬':route[0]==='math'?'🧮':route[1]==='punct'?'📄':'✍️';
   return icon+' '+text;
 }
-card=function(title,desc,action){if(title==='✍️ Ortograme')return `<button class="card" onclick="${esc(action)}"><strong>${esc(activityCardTitle(title))}</strong></button>`;if(title==='🔬 ȘTIINȚE ALE NATURII')desc='Lecții și experimente';return `<button class="card" onclick="${esc(action)}"><strong>${esc(activityCardTitle(title))}</strong><small>${esc(String(desc).trim().replace(/\.$/,''))}</small></button>`;};
+card=function(title,desc,action,addedAt){const age=Date.now()-Date.parse(addedAt);const badge=Number.isFinite(age)&&age>=0&&age<14*24*60*60*1000?' <span class="new-badge">Nou</span>':'';if(title==='✍️ Ortograme')return `<button class="card" onclick="${esc(action)}"><strong>${esc(activityCardTitle(title))}${badge}</strong></button>`;if(title==='🔬 ȘTIINȚE ALE NATURII')desc='Lecții și experimente';return `<button class="card" onclick="${esc(action)}"><strong>${esc(activityCardTitle(title))}${badge}</strong><small>${esc(String(desc).trim().replace(/\.$/,''))}</small></button>`;};
 const vocabOriginalView=view;
 view=function(html){return vocabOriginalView(route[0]==='llr'&&route[1]==='vocab'?vocabProgressWidget()+vocabQuickNav()+html:html);};
 const vocabOriginalVerify=vocabVerify;
@@ -292,7 +292,7 @@ renderVocab = function(level) {
 route=routeFromPath();state=loadProgress();render();
 
 // Install subject extensions before attaching the shared reward system.
-function curajosLoadScript(name){return new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=SITE_ROOT+'assets/'+name+'.js?v='+(name==='orthograms'?'20261110-cei':name==='ortho-bonus'?'20261110-evaluare':'20261105-calm');s.onload=resolve;s.onerror=reject;document.body.appendChild(s);});}
+function curajosLoadScript(name){return new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=SITE_ROOT+'assets/'+name+'.js?v='+(name==='orthograms'?'20261110-cei':name==='ortho-bonus'?'20261112-remediala':'20261105-calm');s.onload=resolve;s.onerror=reject;document.body.appendChild(s);});}
 Promise.all([
  curajosLoadScript('science-data').then(()=>curajosLoadScript('science-lessons')),
  curajosLoadScript('math-order'),
