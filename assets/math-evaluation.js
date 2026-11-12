@@ -45,9 +45,9 @@ const MATH_EVAL={
   ['(6200 − 2100) + (3100 − 1400) − 1200 + 1000 − 1300',4300]
  ].map(([q,a])=>({q,a})),
  necunoscute:[
-  ['(a + 1250) − 930 = 4640. Află a.',4320],
-  ['7200 − (b + 1300) = 2500. Află b.',3400],
-  ['(c − 1100) + 1900 = 4800. Află c.',4000]
+  ['a + 2410 − 1320 = 4360. Află a.',3270],
+  ['b − 2300 − 1400 = 3200. Află b.',6900],
+  ['8100 − c + 1800 = 4900. Află c.',5000]
  ].map(([q,a])=>({q,a})),
  probleme:[
   ['Copiii au strâns 1218 frunze galbene, iar frunze roșii cu 399 mai puține. Frunze ruginii au strâns cât cele galbene și roșii la un loc. Câte frunze au strâns în total?',4074,[1218,819,2037,4074]],
@@ -66,8 +66,8 @@ function mathEvalNormal(value){return String(value).replace(/[\s\u00a0\u202f]/g,
 function mathEvalRender(kind){
  if(!MATH_EVAL[kind])return view(`<div class="hero"><h2>⭐ Bonus: antrenament pentru evaluare</h2><p>Alege un joc și exersează în ritmul tău!</p></div><div class="cards">${Object.entries(MATH_EVAL_TYPES).map(([key,title],i)=>card((i+1)+'. '+title,MATH_EVAL[key].length+' exerciții',`go('math','evaluation','${key}')`)).join('')}</div>`);
  const rows=MATH_EVAL[kind];
- const rule=kind==='necunoscute'?`<div class="rule"><b>REȚINE!</b><ol><li>Mărești necunoscuta.</li><li>Ce rol are „marea necunoscută”?</li><li>Cum o aflăm?</li><li>Copiem „marea necunoscută”!</li><li>O aflăm!</li><li>Am rămas cu o necunoscută mică, așa și-așa! 🎶</li><li>Rezolv exercițiul clasic!</li></ol></div>`:'';
- const intro=kind==='afla'?'Scrie exercițiul și rezultatul, de exemplu: 8000 − 3000 = 5000.':kind==='ordine'?'Respectă ordinea operațiilor, apoi scrie rezultatul.':kind==='necunoscute'?'Află necunoscuta și scrie valoarea ei.':kind==='probleme'?'Citește problema și alege totalul.':kind==='ascunse'?'Alege numărul care se ascunde.':'Calculează și scrie răspunsul.';
+ const rule=kind==='necunoscute'?`<div class="rule"><b>REȚINE!</b><ol><li>Mărești necunoscuta.</li><li>Ce rol are „marea necunoscută”?</li><li>Cum o aflăm?</li><li>Copiem „marea necunoscută”!</li><li>O aflăm!</li><li>Am rămas cu o necunoscută mică, așa și-așa! 🎶</li><li>Rezolv exercițiul clasic!</li></ol></div><div class="panel"><h3>📝 Model</h3><div style="line-height:1.9">a + 2520 − 1610 = 4337<br>a + 2520 = 4337 + 1610<br>a + 2520 = 5947<br>a = 5947 − 2520<br><b>a = 3427</b></div></div>`:'';
+ const intro=kind==='afla'?'Scrie exercițiul și rezultatul, de exemplu: 8000 − 3000 = 5000.':kind==='ordine'?'Respectă ordinea operațiilor, apoi scrie rezultatul.':kind==='necunoscute'?'Rezolvă după model, apoi scrie valoarea necunoscutei.':kind==='probleme'?'Citește problema și alege totalul.':kind==='ascunse'?'Alege numărul care se ascunde.':'Calculează și scrie răspunsul.';
  const tasks=rows.map((t,i)=>`<div class="task" id="me-task-${i}"><p><b>${i+1}.</b> ${esc(t.q)}${kind==='calculeaza'||kind==='ordine'?' = ?':''}</p>${t.options?`<div class="options">${t.options.map((n,j)=>`<label class="option"><input type="radio" name="me-${i}" value="${n}" ${String(state['me-'+i])===String(n)?'checked':''} onchange="mathEvalSet(${i},this.value)"> ${n}</label>`).join('')}</div>`:`<input class="entry" style="width:${t.expression?'min(100%, 440px)':'160px'}" type="text" ${t.expression?'':'inputmode="numeric"'} autocomplete="off" aria-label="Răspunsul exercițiului ${i+1}" placeholder="${t.expression?'Scrie exercițiul și rezultatul':'Răspunsul tău'}" value="${esc(String(state['me-'+i]||''))}" oninput="mathEvalSet(${i},this.value)">`}<div class="me-feedback" aria-live="polite"></div></div>`).join('');
  view(`<div class="hero"><h2>⭐ ${esc(MATH_EVAL_TYPES[kind])}</h2><p>${intro}</p>${rule}</div><div class="panel">${tasks}<div class="row"><button class="btn" onclick="mathEvalVerify()">✓ Verifică</button><button class="btn alt" onclick="mathEvalRepeat()">↺ Reîncearcă</button></div><div id="me-score" aria-live="polite"></div></div>`);
 }
