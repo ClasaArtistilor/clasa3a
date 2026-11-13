@@ -1,5 +1,4 @@
 name: Publică site-ul pe GitHub Pages
-# Publică versiunea actuală a site-ului după fiecare actualizare pe main.
 
 on:
   push:
