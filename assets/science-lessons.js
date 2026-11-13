@@ -5,7 +5,9 @@ const scienceOriginalCrumbs=crumbs;
 crumbs=function(){return scienceOriginalCrumbs().replace(/>lessons<\/button>/g,'>Lecții</button>').replace(/>experiments<\/button>/g,'>Experimente</button>').replace(/>sources<\/button>/g,'>Surse de apă</button>').replace(/>states<\/button>/g,'>Stările de agregare</button>').replace(/>cycle<\/button>/g,'>Circuitul apei</button>').replace(/>weather<\/button>/g,'>Fenomene ale naturii</button>').replace(/>pollution<\/button>/g,'>Poluare și protejarea mediului</button>').replace(/>invata<\/button>/g,'>Învățăm</button>').replace(/>text<\/button>/g,'>Text lacunar</button>').replace(/>crossword<\/button>/g,'>Rebus</button>').replace(/>tf<\/button>/g,'>Adevărat sau fals</button>').replace(/>gaps<\/button>/g,'>Completează</button>').replace(/>match<\/button>/g,'>Asociază</button>').replace(/>choice<\/button>/g,'>Alege</button>');};
 FRIENDLY_ROUTES['stiinte/lectii']=['science','lessons'];
 FRIENDLY_ROUTES['stiinte/experimente']=['science','experiments'];
-const scienceSlugs={sources:'surse-de-apa',states:'starile-de-agregare',cycle:'circuitul-apei-in-natura',weather:'fenomene-ale-naturii',pollution:'poluarea-si-protejarea-mediului'};
+FRIENDLY_ROUTES['stiinte/unitatea-1-recapitulare']=['science','lessons','recap'];
+FRIENDLY_ROUTES['stiinte/caracteristici-vietuitoarelor-nevoi-de-baza']=['science','lessons','unit7'];
+const scienceSlugs={sources:'surse-de-apa',states:'starile-de-agregare',cycle:'circuitul-apei-in-natura',weather:'fenomene-ale-naturii',pollution:'poluarea-si-protejarea-mediului',recap:'unitatea-1-recapitulare',unit7:'caracteristici-vietuitoarelor-nevoi-de-baza'};
 const SCIENCE_LEARN={
  sources:[
  ['💧','Apa înseamnă viață','Apa este vitală pentru plante, animale și oameni.'],
@@ -50,6 +52,25 @@ const SCIENCE_LEARN={
  ['🌱','Solul','Gunoaiele aruncate la întâmplare și substanțele chimice toxice pot polua pământul.'],
  ['🌧️','Ploaia acidă','Poluanții din aer pot ajunge în ploaie și pot afecta apa și solul.'],
  ['♻️','Ce putem face?','Punem deșeurile în locuri amenajate, le sortăm pentru reciclare și îngrijim copacii și spațiile verzi.']
+ ],
+ recap:[
+  ['💧','Circuitul apei','Soarele încălzește apa din lacuri, râuri și mări. O parte din apă se evaporă, vaporii se răcesc și formează picături în nori.'],
+  ['🌧️','Precipitațiile','Ploaia, ninsoarea și grindina sunt forme de precipitații. Ele aduc apa din nori pe pământ.'],
+  ['🏞️','Ape stătătoare și curgătoare','Bălțile, lacurile, mările și oceanele sunt ape stătătoare. Izvoarele, pâraiele, râurile și fluviile sunt ape curgătoare.'],
+  ['🌱','Apa și solul','O parte din apa de ploaie pătrunde în sol, iar alta ajunge în pâraie, râuri, lacuri, mări și oceane.'],
+  ['♻️','Protejăm apa','Deșeurile și substanțele toxice pot polua apa și pot dăuna viețuitoarelor. Aruncăm gunoiul în locurile potrivite și păstrăm apele curate.']
+ ],
+ unit7:[
+  ['🌍','Lumea vie','Lumea vie este alcătuită din plante, animale și oameni. Plantele, animalele și oamenii sunt viețuitoare.'],
+  ['🌱','Plantele','Plantele respiră, se hrănesc, cresc și se înmulțesc. Ele au nevoie de aer, apă, lumină, temperatură potrivită și sol.'],
+  ['🦌','Animalele','Animalele respiră, se hrănesc, cresc și se înmulțesc. Ele au nevoie de aer, apă, hrană, lumină, căldură și adăpost.'],
+  ['🌬️','Aerul','Aerul este necesar pentru respirație. Nici plantele, nici animalele și nici oamenii nu pot trăi fără aer.'],
+  ['💧','Apa','Apa este esențială pentru corpul tuturor viețuitoarelor. Plantele și animalele nu ar putea exista fără apă.'],
+  ['☀️','Lumina','Plantele își pregătesc singure hrana cu ajutorul energiei luminii solare.'],
+  ['🌡️','Temperatura potrivită','Viețuitoarele au nevoie de condiții potrivite de temperatură pentru a trăi și a se dezvolta.'],
+  ['🌱','Solul','Solul oferă plantelor apă și substanțe nutritive.'],
+  ['🏡','Hrana și adăpostul','Animalele au nevoie de hrană și de un adăpost potrivit mediului în care trăiesc.'],
+  ['💡','De reținut','Viețuitoarele respiră, se hrănesc, cresc și se înmulțesc. Toate au nevoie de condiții potrivite pentru a trăi.']
  ]
 };
 const scienceActivities={text:['📝 Text lacunar','Completează textul lecției'],crossword:['🧩 Rebus','Descoperă cuvântul de pe verticală'],gaps:['📝 Completează','16 propoziții de completat'],match:['🔗 Asociază','12 situații și explicațiile lor'],choice:['🎯 Alege răspunsul','12 întrebări cu variante'],tf:['✅ Adevărat sau fals','Alege A sau F']};
@@ -123,8 +144,8 @@ function scienceLessonRender(id,part){
 }
 renderScience=function(id){
  if(id===undefined)return view(`<div class="hero"><h2>🔬 Științe ale naturii</h2><p>Învață, exersează și descoperă!</p></div><div class="cards">${card('📘 Lecții','Exerciții și jocuri pentru recapitulare',"go('science','lessons')")}${card('🔬 Experimente','Micul laborator de științe',"go('science','experiments')")}</div>`);
- if(id==='lessons'){if(route[2])return scienceLessonRender(route[2],route[3]);return view(scienceLessonNav()+`<div class="hero"><h2>📘 Lecții</h2><p>Alege ce vrei să exersezi.</p></div><div class="cards">${Object.entries(SCIENCE_LESSONS).map(([id,l],i)=>({id,l,number:i+1})).reverse().map(({id,l,number})=>card(number+'. '+({sources:'🌊',states:'🧊',cycle:'💧',weather:'🌦️',pollution:'🌱'}[id]||'🔬')+' '+l.title,l.intro,`go('science','lessons','${id}')`,['weather','pollution'].includes(id)?'2026-11-12T00:00:00+02:00':undefined)).join('')}</div>`);}
- if(id==='experiments'){scienceOriginalRenderer();return;}
+ if(id==='lessons'){if(route[2])return scienceLessonRender(route[2],route[3]);return view(scienceLessonNav()+`<div class="hero"><h2>📘 Lecții</h2><p>Alege ce vrei să exersezi.</p></div><div class="cards">${Object.entries(SCIENCE_LESSONS).map(([id,l],i)=>({id,l,number:i+1})).reverse().map(({id,l,number})=>card(number+'. '+({sources:'🌊',states:'🧊',cycle:'💧',weather:'🌦️',pollution:'🌱',recap:'💧',unit7:'🌱'}[id]||'🔬')+' '+l.title,l.intro,`go('science','lessons','${id}')`,['weather','pollution'].includes(id)?'2026-11-12T00:00:00+02:00':['recap','unit7'].includes(id)?'2026-11-13T07:00:00+02:00':undefined)).join('')}</div>`);}
+ if(id==='experiments'){return view(scienceLessonNav()+`<div class="hero"><h2>🔬 Experimente</h2><p>Formulează o predicție, experimentează, observă și explică!</p></div><div class="cards">${SCIENCE.map((e,i)=>card(`${i+1}. ${e.title}`,e.topic,`go('science','${i}')`)).join('')}</div>`);}
  return scienceOriginalRenderer(id);
 };
 // Register deep links before the final route resolution.

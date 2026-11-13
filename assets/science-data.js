@@ -1159,5 +1159,440 @@ window.SCIENCE_LESSONS = {sources: {
   ["Toată apa de pe Pământ este dulce.",false,"Cea mai mare parte a apei de pe Pământ este sărată."],
   ["Hidrocentralele pot produce curent electric cu ajutorul apei.",true,"Apa poate pune în mișcare turbinele unei hidrocentrale."]
  ]
+},
+ ...window.SCIENCE_LESSONS,
+ recap:{
+  "title": "Unitatea 1 – Recapitulare",
+  "intro": "Recapitulează circuitul apei în natură, precipitațiile, poluarea și apele stătătoare sau curgătoare.",
+  "sections": [
+    "text",
+    "tf",
+    "choice"
+  ],
+  "bank": [
+    "evaporă",
+    "condensare",
+    "precipitații",
+    "stătătoare",
+    "curgătoare",
+    "sol",
+    "ploaie",
+    "poluarea",
+    "apei",
+    "râu"
+  ],
+  "text": [
+    [
+      "Soarele încălzește apa, iar o parte din ea se ___.",
+      "evaporă"
+    ],
+    [
+      "Vaporii se răcesc și se transformă în picături prin ___.",
+      "condensare"
+    ],
+    [
+      "Ploaia, ninsoarea și grindina sunt ___.",
+      "precipitații"
+    ],
+    [
+      "Bălțile, lacurile, mările și oceanele sunt ape ___.",
+      "stătătoare"
+    ],
+    [
+      "Izvoarele, pâraiele, râurile și fluviile sunt ape ___.",
+      "curgătoare"
+    ],
+    [
+      "O parte din apa de ploaie pătrunde în ___.",
+      "sol"
+    ],
+    [
+      "Apa care cade din nori sub formă de picături se numește ___.",
+      "ploaie"
+    ],
+    [
+      "Deșeurile aruncate în apă pot provoca ___.",
+      "poluarea"
+    ],
+    [
+      "Circuitul ___ se repetă în natură.",
+      "apei"
+    ],
+    [
+      "Pentru a proteja apa, nu aruncăm deșeuri în ___.",
+      "râu"
+    ]
+  ],
+  "tf": [
+    [
+      "Soarele încălzește apa și contribuie la circuitul apei.",
+      true,
+      "Căldura Soarelui ajută apa să se evapore."
+    ],
+    [
+      "Condensarea transformă vaporii în picături de apă.",
+      true,
+      "Vaporii se răcesc și formează picături."
+    ],
+    [
+      "Ploaia și ninsoarea sunt precipitații.",
+      true,
+      "Ambele aduc apa din nori pe pământ."
+    ],
+    [
+      "Lacurile și bălțile sunt ape curgătoare.",
+      false,
+      "Lacurile și bălțile sunt ape stătătoare."
+    ],
+    [
+      "Râurile și pâraiele sunt ape curgătoare.",
+      true,
+      "Apa lor se deplasează spre alte ape."
+    ],
+    [
+      "Apa de ploaie nu poate pătrunde în sol.",
+      false,
+      "O parte din apa de ploaie pătrunde în sol."
+    ],
+    [
+      "Deșeurile aruncate în ape pot polua apa.",
+      true,
+      "Deșeurile pot dăuna viețuitoarelor."
+    ],
+    [
+      "Poluarea apei poate afecta plantele și animalele.",
+      true,
+      "Viețuitoarele au nevoie de apă curată."
+    ],
+    [
+      "Grindina este o formă de precipitație.",
+      true,
+      "Grindina cade din nori."
+    ],
+    [
+      "Mările și oceanele sunt ape curgătoare.",
+      false,
+      "În această clasificare, mările și oceanele sunt ape stătătoare."
+    ]
+  ],
+  "choice": [
+    [
+      "Care este o etapă a circuitului apei?",
+      [
+        "evaporarea",
+        "înmulțirea",
+        "ruginirea"
+      ],
+      0,
+      "Apa se evaporă când trece în aer sub formă de vapori."
+    ],
+    [
+      "Cum se numește transformarea vaporilor în picături?",
+      [
+        "condensare",
+        "evaporare",
+        "solidificare"
+      ],
+      0,
+      "Vaporii se răcesc și formează picături."
+    ],
+    [
+      "Care grup conține numai precipitații?",
+      [
+        "ploaie, ninsoare, grindină",
+        "râu, lac, izvor",
+        "ceață, vânt, sol"
+      ],
+      0,
+      "Ploaia, ninsoarea și grindina sunt precipitații."
+    ],
+    [
+      "Care sunt ape stătătoare?",
+      [
+        "bălțile și lacurile",
+        "râurile și fluviile",
+        "izvoarele și pâraiele"
+      ],
+      0,
+      "Bălțile și lacurile sunt ape stătătoare."
+    ],
+    [
+      "Care este apă curgătoare?",
+      [
+        "un râu",
+        "un lac",
+        "o baltă"
+      ],
+      0,
+      "Râurile sunt ape curgătoare."
+    ],
+    [
+      "Unde pătrunde o parte din apa de ploaie?",
+      [
+        "în sol",
+        "în Soare",
+        "în vânt"
+      ],
+      0,
+      "Apa de ploaie poate pătrunde în sol."
+    ],
+    [
+      "Ce poate polua apa?",
+      [
+        "deșeurile aruncate în râu",
+        "un izvor curat",
+        "ploaia obișnuită"
+      ],
+      0,
+      "Deșeurile pot polua apa."
+    ],
+    [
+      "Cum protejăm apele?",
+      [
+        "aruncăm gunoiul la coș",
+        "aruncăm ulei în râu",
+        "lăsăm plasticul pe mal"
+      ],
+      0,
+      "Deșeurile se pun în locurile amenajate."
+    ],
+    [
+      "Ce încălzește apa în circuitul naturii?",
+      [
+        "Soarele",
+        "Luna",
+        "pietrele"
+      ],
+      0,
+      "Căldura Soarelui pune apa în mișcare."
+    ],
+    [
+      "Ce se întâmplă cu apa de ploaie?",
+      [
+        "o parte pătrunde în sol, iar alta ajunge în ape",
+        "dispare pentru totdeauna",
+        "se transformă în nisip"
+      ],
+      0,
+      "Apa continuă circuitul în natură."
+    ]
+  ]
+},
+ unit7:{
+  "title": "Caracteristici ale viețuitoarelor. Nevoi de bază",
+  "intro": "Descoperă ce au în comun plantele, animalele și oamenii și de ce au nevoie pentru a trăi.",
+  "sections": [
+    "text",
+    "tf",
+    "choice"
+  ],
+  "bank": [
+    "oameni",
+    "mor",
+    "soarelui",
+    "potrivită",
+    "sol",
+    "viețuitoarelor",
+    "apă",
+    "adăpost",
+    "trăiesc",
+    "lumină"
+  ],
+  "text": [
+    [
+      "Lumea vie este alcătuită din plante, animale și ___.",
+      "oameni"
+    ],
+    [
+      "Viețuitoarele respiră, se hrănesc, cresc, se înmulțesc și ___.",
+      "mor"
+    ],
+    [
+      "Plantele își pregătesc hrana cu ajutorul luminii ___.",
+      "soarelui"
+    ],
+    [
+      "Plantele au nevoie de temperatură ___.",
+      "potrivită"
+    ],
+    [
+      "Plantele iau apă și substanțe nutritive din ___.",
+      "sol"
+    ],
+    [
+      "Apa este esențială pentru corpul tuturor ___.",
+      "viețuitoarelor"
+    ],
+    [
+      "Oamenii și animalele au nevoie de aer și ___.",
+      "apă"
+    ],
+    [
+      "Animalele au nevoie de hrană, lumină, căldură și ___.",
+      "adăpost"
+    ],
+    [
+      "Animalele au nevoi diferite în funcție de mediul în care ___.",
+      "trăiesc"
+    ],
+    [
+      "Plantele au nevoie de ___ pentru a-și pregăti hrana cu ajutorul Soarelui.",
+      "lumină"
+    ]
+  ],
+  "tf": [
+    [
+      "Plantele, animalele și oamenii sunt viețuitoare.",
+      true,
+      "Toate fac parte din lumea vie."
+    ],
+    [
+      "Viețuitoarele respiră, se hrănesc și cresc.",
+      true,
+      "Acestea sunt caracteristici ale viețuitoarelor."
+    ],
+    [
+      "Viețuitoarele nu se înmulțesc și nu mor.",
+      false,
+      "Viețuitoarele se pot înmulți și au o durată de viață."
+    ],
+    [
+      "Plantele au nevoie de lumină.",
+      true,
+      "Lumina ajută plantele să-și pregătească hrana."
+    ],
+    [
+      "Plantele iau apă și substanțe nutritive din sol.",
+      true,
+      "Solul oferă plantelor apă și substanțe nutritive."
+    ],
+    [
+      "Animalele pot trăi fără apă.",
+      false,
+      "Apa este esențială și pentru animale."
+    ],
+    [
+      "Oamenii și animalele au nevoie de aer.",
+      true,
+      "Aerul este necesar pentru respirație."
+    ],
+    [
+      "Toate animalele au aceleași nevoi, indiferent de mediul în care trăiesc.",
+      false,
+      "Nevoile pot fi diferite în funcție de mediul de viață."
+    ],
+    [
+      "Plantele își pregătesc singure hrana folosind lumina Soarelui.",
+      true,
+      "Plantele folosesc energia luminii solare."
+    ],
+    [
+      "Animalele își caută hrana.",
+      true,
+      "Spre deosebire de plante, animalele își procură hrana."
+    ]
+  ],
+  "choice": [
+    [
+      "Ce grupă cuprinde caracteristici ale viețuitoarelor?",
+      [
+        "respiră, se hrănesc, cresc",
+        "ruginesc, se topesc, strălucesc",
+        "sunt nemuritoare, nu cresc, nu respiră"
+      ],
+      0,
+      "Viețuitoarele respiră, se hrănesc și cresc."
+    ],
+    [
+      "De ce au nevoie plantele?",
+      [
+        "aer, apă, lumină, temperatură potrivită și sol",
+        "doar de pietre",
+        "numai de întuneric"
+      ],
+      0,
+      "Plantele au nevoie de aceste condiții pentru a trăi și a se dezvolta."
+    ],
+    [
+      "Cu ajutorul cărei energii își pregătesc plantele hrana?",
+      [
+        "luminii Soarelui",
+        "sunetului ploii",
+        "vântului"
+      ],
+      0,
+      "Plantele folosesc energia luminii solare."
+    ],
+    [
+      "De unde iau plantele apa și substanțele nutritive?",
+      [
+        "din sol",
+        "din nori",
+        "din lumina Soarelui"
+      ],
+      0,
+      "Solul oferă plantelor apă și substanțe nutritive."
+    ],
+    [
+      "Care este o nevoie de bază a oamenilor și animalelor?",
+      [
+        "apa",
+        "jucăriile",
+        "caietele"
+      ],
+      0,
+      "Apa este esențială pentru viețuitoare."
+    ],
+    [
+      "De ce mai au nevoie animalele?",
+      [
+        "de hrană, lumină, căldură și adăpost",
+        "doar de nisip",
+        "de manuale și creioane"
+      ],
+      0,
+      "Nevoile animalelor depind și de mediul în care trăiesc."
+    ],
+    [
+      "Ce fac viețuitoarele pe măsură ce se dezvoltă?",
+      [
+        "cresc",
+        "se transformă în pietre",
+        "rămân mereu la fel"
+      ],
+      0,
+      "Creșterea și dezvoltarea sunt caracteristici ale viețuitoarelor."
+    ],
+    [
+      "Care dintre acestea este o viețuitoare?",
+      [
+        "o plantă",
+        "o piatră",
+        "un nor"
+      ],
+      0,
+      "Plantele fac parte din lumea vie."
+    ],
+    [
+      "Ce nu poate lipsi din viața oamenilor și a animalelor?",
+      [
+        "aerul și apa",
+        "jucăriile și cărțile",
+        "nisipul și pietrele"
+      ],
+      0,
+      "Oamenii și animalele nu pot trăi fără aer și apă."
+    ],
+    [
+      "De ce pot avea animalele nevoi diferite?",
+      [
+        "trăiesc în medii diferite",
+        "toate locuiesc în același loc",
+        "nu au nevoie de nimic"
+      ],
+      0,
+      "Nevoile depind de condițiile mediului de viață."
+    ]
+  ]
 }
-, ...window.SCIENCE_LESSONS};
+};
