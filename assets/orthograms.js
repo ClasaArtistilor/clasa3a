@@ -608,7 +608,125 @@ window.EXTRA_ORTHOGRAMS = {
         "i-au arătat"
       ]
     ]
-  }
+  },
+  "intruna": {
+  "title": "într-una / întruna",
+  "forms": [
+    "într-una",
+    "întruna"
+  ],
+  "rule": "„întruna” se scrie legat și înseamnă „mereu, fără încetare”: „Ploaia a căzut întruna.” „într-una” se scrie cu cratimă când înseamnă „în una” și apare adesea înaintea lui „dintre”: „Am găsit cartea într-una dintre cutii.”",
+  "choose": [
+    [
+      "Ploaia a căzut ___ toată noaptea.",
+      "întruna"
+    ],
+    [
+      "Am găsit o felicitare ___ dintre cărți.",
+      "într-una"
+    ],
+    [
+      "Bunicul a povestit ___ despre călătorie.",
+      "întruna"
+    ],
+    [
+      "Ana a pus creioanele ___ dintre cutii.",
+      "într-una"
+    ],
+    [
+      "Vântul a suflat ___, fără oprire.",
+      "întruna"
+    ],
+    [
+      "___ dintre zile, clasa a mers la muzeu.",
+      "într-una"
+    ],
+    [
+      "Cățelul a lătrat ___ până a venit stăpânul.",
+      "întruna"
+    ],
+    [
+      "Am găsit cartea ___ dintre cutiile de pe raft.",
+      "într-una"
+    ],
+    [
+      "Clopoțelul a sunat ___ în timpul pauzei.",
+      "întruna"
+    ],
+    [
+      "Am așezat fotografiile ___ dintre paginile albumului.",
+      "într-una"
+    ],
+    [
+      "Bunica a cântat ___ cât timp a lucrat.",
+      "întruna"
+    ],
+    [
+      "___ dintre grădini au înflorit lalelele.",
+      "într-una"
+    ]
+  ],
+  "text": [
+    "Într-una dintre zile, clasa a mers la bibliotecă. Afară ploua ___, fără încetare. Am găsit o poveste ___ dintre cărțile de aventuri. Colegii au vorbit ___ despre personajele lor preferate. Ploaia a căzut ___ până la plecare.",
+    [
+      "întruna",
+      "într-una",
+      "întruna",
+      "întruna"
+    ]
+  ],
+  "errors": [
+    [
+      "Ploaia a căzut întruna toată noaptea.",
+      true
+    ],
+    [
+      "Am găsit întruna dintre cutii o minge.",
+      false
+    ],
+    [
+      "Bunica a vorbit întruna despre copilăria ei.",
+      true
+    ],
+    [
+      "Întruna dintre zile am mers la bibliotecă.",
+      false
+    ],
+    [
+      "Vântul a suflat întruna, fără oprire.",
+      true
+    ],
+    [
+      "Am pus scrisoarea întruna dintre plicuri.",
+      false
+    ],
+    [
+      "Clopoțelul a sunat întruna în timpul pauzei.",
+      true
+    ],
+    [
+      "Într-una dintre camere se află biblioteca.",
+      true
+    ],
+    [
+      "Copiii au râs într-una, fără să se oprească.",
+      false
+    ],
+    [
+      "Am găsit un bilețel într-una dintre cutii.",
+      true
+    ],
+    [
+      "A nins întruna până dimineață.",
+      true
+    ],
+    [
+      "Întruna dintre grădini au înflorit lalelele.",
+      false
+    ]
+  ],
+  "addedAt": "2026-11-15T07:00:00+02:00"
+}
 };
 
 const EXTRA_ORTHO=window.EXTRA_ORTHOGRAMS;
@@ -616,7 +734,7 @@ const EXTRA_ORTHO=window.EXTRA_ORTHOGRAMS;
 setval=function(id,value){diplomaReadyFor='';state[key(id)]=value;saveProgress();checked=false;const score=document.querySelector('#score');if(score)score.innerHTML='';};
 const extraOrthoCrumbs=crumbs;crumbs=function(){let html=extraOrthoCrumbs();if(route[0]==='llr'&&route[1]==='ortho')for(const [key,lesson] of Object.entries(EXTRA_ORTHO))html=html.replace('>'+key+'</button>','>'+lesson.title+'</button>');return html;};
 const orthoOriginalRenderer=renderOrtho,orthoOriginalHint=hint;
-const orthoSlugs={cei:'cei-ce-i',ceai:'ceai-ce-ai',la:'la-l-a',ia:'ia-i-a',iau:'iau-i-au'};
+const orthoSlugs={cei:'cei-ce-i',ceai:'ceai-ce-ai',la:'la-l-a',ia:'ia-i-a',iau:'iau-i-au',intruna:'intr-una-intruna'};
 for(const [type,lesson] of Object.entries(EXTRA_ORTHO)){
  orthoNames[type]=lesson.title;opts[type]=lesson.forms;rules[type]=lesson.rule;
  DATA.ortho[type]=vocabShuffle(lesson.choose);DATA.orthoTexts[type]=lesson.text;DATA.errors[type]=vocabShuffle(lesson.errors);DATA.transforms[type]=lesson.transforms||[];
@@ -642,7 +760,7 @@ renderOrtho=function(type,exercise){
   }).join('');
   return view(`<div class="hero"><div class="section-label">cei / ce-i</div><h2>Completează textele</h2><p>Alege forma potrivită pentru fiecare spațiu.</p><button class="btn alt" onclick="hint('general')">💡 Ajutor</button><div id="hintgeneral"></div></div><div class="panel">${stories}${actions()}</div>`);
  }
- if(!type)return view(`<div class="hero"><h2>✍️ Ortograme</h2><p>Alege ce vrei să exersezi.</p></div><div class="cards">${Object.keys(orthoNames).map(t=>card(orthoNames[t],EXTRA_ORTHO[t]?(EXTRA_ORTHO[t].transforms?'Alegere • text • transformare • greșeli':'Alegere • text • greșeli'):'Alegere • text • transformare • greșeli',`go('llr','ortho','${t}')`)).join('')}</div>`);
+ if(!type)return view(`<div class="hero"><h2>✍️ Ortograme</h2><p>Alege ce vrei să exersezi.</p></div><div class="cards">${Object.keys(orthoNames).map(t=>card(orthoNames[t],EXTRA_ORTHO[t]?(EXTRA_ORTHO[t].transforms?'Alegere • text • transformare • greșeli':'Alegere • text • greșeli'):'Alegere • text • transformare • greșeli',`go('llr','ortho','${t}')`,EXTRA_ORTHO[t]?.addedAt)).join('')}</div>`);
  if(!EXTRA_ORTHO[type]||exercise)return orthoOriginalRenderer(type,exercise);
  const lesson=EXTRA_ORTHO[type],hasTransform=!!lesson.transforms;
  return view(`<div class="hero"><h2>${esc(lesson.title)}</h2><div class="rule"><b>Reține!</b> ${esc(lesson.rule)}</div></div><div class="cards">${card('1. Alege forma corectă','12 enunțuri de completat',`go('llr','ortho','${type}','choose')`)}${card('2. Completează textul',type==='cei'?'Trei povești scurte, cu formele potrivite':'O poveste scurtă, cu formele potrivite',`go('llr','ortho','${type}','text')`)}${hasTransform?card('3. Transformă după model','Povestește ce s-a întâmplat ieri',`go('llr','ortho','${type}','transform')`):''}${card((hasTransform?'4.':'3.')+' Detectivul greșelilor','Descoperă enunțurile scrise corect',`go('llr','ortho','${type}','errors')`)}</div>`);
