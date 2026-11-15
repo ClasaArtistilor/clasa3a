@@ -726,6 +726,127 @@ window.EXTRA_ORTHOGRAMS = {
     ]
   ],
   "addedAt": "2026-11-15T07:00:00+02:00"
+},
+  "numai": {
+  "title": "numai / nu mai",
+  "forms": [
+    "numai",
+    "nu mai",
+    "într-una",
+    "întruna"
+  ],
+  "rule": "„numai” se scrie legat și înseamnă „doar”: „Am numai două creioane.” „nu mai” se scrie în două cuvinte și arată că o acțiune încetează: „Eu nu mai vreau să mă joc.” Ne amintim și „întruna” = „mereu”, iar „într-una” = „în una dintre”.",
+  "choose": [
+    [
+      "___ bunica știe răspunsul.",
+      "numai"
+    ],
+    [
+      "Eu ___ vreau să mă joc.",
+      "nu mai"
+    ],
+    [
+      "___ una dintre camere este biblioteca.",
+      "numai"
+    ],
+    [
+      "Ploaia a căzut ___ toată noaptea.",
+      "întruna"
+    ],
+    [
+      "Avem ___ două zile până la vacanță.",
+      "numai"
+    ],
+    [
+      "___ alergăm pe hol!",
+      "nu mai"
+    ],
+    [
+      "Am găsit cheia ___ dintre sertare.",
+      "într-una"
+    ],
+    [
+      "Bunicul vorbește ___ despre grădină.",
+      "întruna"
+    ],
+    [
+      "Mara are ___ trei creioane colorate.",
+      "numai"
+    ],
+    [
+      "Cățelul ___ roade papucii.",
+      "nu mai"
+    ],
+    [
+      "Am pus jucăria ___ dintre cutii.",
+      "într-una"
+    ],
+    [
+      "Vântul a suflat ___, fără oprire.",
+      "întruna"
+    ]
+  ],
+  "text": [
+    "Într-o dimineață, Maria vorbea ___ despre excursie. ___ una dintre prietene îi spusese că vor vizita un castel. Maria avea ___ două zile până la plecare. „Eu ___ vreau să mai aștept!”, a spus ea. La final, a pus hainele ___ dintre valizele pregătite.",
+    [
+      "întruna",
+      "numai",
+      "numai",
+      "nu mai",
+      "într-una"
+    ]
+  ],
+  "errors": [
+    [
+      "Numai bunica știe răspunsul.",
+      true
+    ],
+    [
+      "Eu numai vreau să mă joc.",
+      false
+    ],
+    [
+      "Câinele latră întruna.",
+      true
+    ],
+    [
+      "Întruna dintre camere se află biblioteca.",
+      false
+    ],
+    [
+      "Am numai două creioane.",
+      true
+    ],
+    [
+      "Nu mai alerg prin curte.",
+      true
+    ],
+    [
+      "Am pus florile într-una dintre vaze.",
+      true
+    ],
+    [
+      "Nu mai bunica a venit la noi.",
+      false
+    ],
+    [
+      "Plouă întruna.",
+      true
+    ],
+    [
+      "Eu nu mai vreau să întârzii.",
+      true
+    ],
+    [
+      "Am pus caietele întruna dintre cutii.",
+      false
+    ],
+    [
+      "Numai vreau să mănânc.",
+      false
+    ]
+  ],
+  "addedAt": "2026-11-15T07:00:00+02:00"
 }
 };
 
@@ -734,7 +855,7 @@ const EXTRA_ORTHO=window.EXTRA_ORTHOGRAMS;
 setval=function(id,value){diplomaReadyFor='';state[key(id)]=value;saveProgress();checked=false;const score=document.querySelector('#score');if(score)score.innerHTML='';};
 const extraOrthoCrumbs=crumbs;crumbs=function(){let html=extraOrthoCrumbs();if(route[0]==='llr'&&route[1]==='ortho')for(const [key,lesson] of Object.entries(EXTRA_ORTHO))html=html.replace('>'+key+'</button>','>'+lesson.title+'</button>');return html;};
 const orthoOriginalRenderer=renderOrtho,orthoOriginalHint=hint;
-const orthoSlugs={cei:'cei-ce-i',ceai:'ceai-ce-ai',la:'la-l-a',ia:'ia-i-a',iau:'iau-i-au',intruna:'intr-una-intruna'};
+const orthoSlugs={cei:'cei-ce-i',ceai:'ceai-ce-ai',la:'la-l-a',ia:'ia-i-a',iau:'iau-i-au',intruna:'intr-una-intruna',numai:'numai-nu-mai'};
 for(const [type,lesson] of Object.entries(EXTRA_ORTHO)){
  orthoNames[type]=lesson.title;opts[type]=lesson.forms;rules[type]=lesson.rule;
  DATA.ortho[type]=vocabShuffle(lesson.choose);DATA.orthoTexts[type]=lesson.text;DATA.errors[type]=vocabShuffle(lesson.errors);DATA.transforms[type]=lesson.transforms||[];
