@@ -292,11 +292,11 @@ renderVocab = function(level) {
 route=routeFromPath();state=loadProgress();render();
 
 // Install subject extensions before attaching the shared reward system.
-function curajosLoadScript(name){return new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=SITE_ROOT+'assets/'+name+'.js?v='+(name==='science-lessons'||name==='science-data'?'20261113-science-tabs-v15':name==='math-evaluation'?'20261113-diploma-artists-v10':name==='orthograms'?'20261115-ortho-numai-v17':name==='ortho-bonus'?'20261113-diploma-artists-v10':'20261113-diploma-artists-v10');s.onload=resolve;s.onerror=reject;document.body.appendChild(s);});}
+function curajosLoadScript(name){return new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=SITE_ROOT+'assets/'+name+'.js?v='+(name==='science-lessons'||name==='science-data'?'20261113-science-tabs-v15':name==='math-evaluation'?'20261113-diploma-artists-v10':name==='multiplication'||name==='math-intervals'?'20261120-math-multiply-intervals-v1':name==='orthograms'?'20261115-ortho-numai-v17':name==='ortho-bonus'?'20261113-diploma-artists-v10':'20261113-diploma-artists-v10');s.onload=resolve;s.onerror=reject;document.body.appendChild(s);});}
 Promise.all([
  curajosLoadScript('science-data').then(()=>curajosLoadScript('science-lessons')),
  curajosLoadScript('math-order'),
  curajosLoadScript('math-unknown'),
  curajosLoadScript('orthograms')
-]).then(()=>curajosLoadScript('rewards')).then(()=>curajosLoadScript('new-subjects')).then(()=>curajosLoadScript('ortho-bonus')).then(()=>curajosLoadScript('word-parts')).then(()=>curajosLoadScript('math-evaluation')).then(()=>curajosLoadScript('comper')).catch(()=>{const el=document.createElement('p');el.className='result';el.textContent='Pagina nu s-a încărcat complet. Reîncarcă și continuă!';document.getElementById('app').prepend(el);});
+]).then(()=>curajosLoadScript('rewards')).then(()=>curajosLoadScript('new-subjects')).then(()=>curajosLoadScript('ortho-bonus')).then(()=>curajosLoadScript('word-parts')).then(()=>curajosLoadScript('math-evaluation')).then(()=>curajosLoadScript('comper')).then(()=>curajosLoadScript('multiplication')).then(()=>curajosLoadScript('math-intervals')).catch(()=>{const el=document.createElement('p');el.className='result';el.textContent='Pagina nu s-a încărcat complet. Reîncarcă și continuă!';document.getElementById('app').prepend(el);});
 
